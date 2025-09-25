@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahendra (Prem) | Creative Scientist & Digital Storyteller</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #fff;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Enhanced animated background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .floating-shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .shape1 { width: 100px; height: 100px; top: 10%; left: 5%; animation-delay: 0s; background: linear-gradient(45deg, rgba(255, 107, 107, 0.3), rgba(78, 205, 196, 0.3)); }
+        .shape2 { width: 150px; height: 150px; top: 50%; right: 5%; animation-delay: 2s; background: linear-gradient(45deg, rgba(240, 147, 251, 0.3), rgba(245, 101, 101, 0.3)); }
+        .shape3 { width: 80px; height: 80px; bottom: 15%; left: 15%; animation-delay: 4s; background: linear-gradient(45deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3)); }
+        .shape4 { width: 120px; height: 120px; top: 30%; right: 30%; animation-delay: 1s; background: linear-gradient(45deg, rgba(78, 205, 196, 0.3), rgba(240, 147, 251, 0.3)); }
+        .shape5 { width: 60px; height: 60px; bottom: 40%; right: 10%; animation-delay: 3s; background: linear-gradient(45deg, rgba(255, 107, 107, 0.3), rgba(102, 126, 234, 0.3)); }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(90deg); }
+            50% { transform: translateY(-40px) rotate(180deg); }
+            75% { transform: translateY(-20px) rotate(270deg); }
+        }
+        
+        /* Stunning Header */
+        header {
+            padding: 3rem 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .profile-avatar {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f093fb);
+            background-size: 400% 400%;
+            animation: gradientShift 4s ease infinite;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            font-weight: 800;
+            color: white;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .profile-avatar::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f093fb);
+            border-radius: 50%;
+            z-index: -1;
+            animation: gradientShift 4s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .profile-avatar:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+        }
+        
+        .profile-info h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #fff, #f0f0f0, #fff);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: textShimmer 3s ease-in-out infinite;
+            font-weight: 800;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        @keyframes textShimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            opacity: 0.95;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+        
+        .roll-number {
+            background: rgba(255, 255, 255, 0.25);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        /* Enhanced Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin: 4rem 0;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 2.5rem;
+            border-radius: 25px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .card:hover::before {
+            left: 100%;
+        }
+        
+        .card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-weight: 700;
+        }
+        
+        .card-icon {
+            font-size: 2.2rem;
+            filter: drop-shadow(0 3px 6px rgba(0,0,0,0.3));
+        }
+        
+        /* Portfolio Sections */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .portfolio-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .portfolio-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+        
+        .portfolio-placeholder {
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .portfolio-placeholder::after {
+            content: 'Click to upload your content!';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 0.5rem;
+            font-size: 0.8rem;
+            text-align: center;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .portfolio-item:hover .portfolio-placeholder::after {
+            transform: translateY(0);
+        }
+        
+        .portfolio-label {
+            padding: 1rem;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        /* Skills Grid Enhanced */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .skill-item {
+            background: linear-gradient(45deg, rgba(255, 107, 107, 0.3), rgba(78, 205, 196, 0.3));
+            padding: 1.2rem;
+            border-radius: 15px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .skill-item:hover {
+            background: linear-gradient(45deg, rgba(255, 107, 107, 0.5), rgba(78, 205, 196, 0.5));
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            text-align: center;
+            margin: 4rem 0;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 30px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+        
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .contact-link {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .contact-link:hover {
+            text-decoration: underline;
+        }
+        
+        .interactive-btn {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            border: none;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 1rem 1rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .interactive-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            background: linear-gradient(45deg, #ff5252, #26c6da);
+        }
+        
+        .fun-fact {
+            background: linear-gradient(45deg, rgba(255, 107, 107, 0.3), rgba(78, 205, 196, 0.3));
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 1.5rem 0;
+            border-left: 5px solid #ff6b6b;
+            font-style: italic;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .hero-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .profile-info h1 {
+                font-size: 2.5rem;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .portfolio-grid, .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Pulse animation for call-to-action */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 107, 107, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0); }
+        }
+        
+        .pulse-btn {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation">
+        <div class="floating-shape shape1"></div>
+        <div class="floating-shape shape2"></div>
+        <div class="floating-shape shape3"></div>
+        <div class="floating-shape shape4"></div>
+        <div class="floating-shape shape5"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="hero-section">
+                <div class="profile-avatar" onclick="animateAvatar()">
+                    MP
+                </div>
+                <div class="profile-info">
+                    <h1>Mahendra (Prem)</h1>
+                    <div class="subtitle">Creative Scientist & Digital Storyteller</div>
+                    <div class="roll-number">🎓 Roll No: 25b2709 | IIT Bombay</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="content-grid">
+            <div class="card" onclick="showDetails('academic')">
+                <h3><span class="card-icon">🎓</span>Academic Journey</h3>
+                <p><strong>Indian Institute of Technology Bombay</strong></p>
+                <p>BS Chemistry (UG Freshman)</p>
+                <div class="fun-fact">
+                    <p>🏜️ From the vibrant desert city of <strong>Jalore, Rajasthan</strong> to the bustling campus of IIT Bombay - bringing small-town dreams to big-city opportunities! The land of forts and folklore now meets cutting-edge science and technology.</p>
+                </div>
+            </div>
+
+            <div class="card" onclick="showDetails('photography')">
+                <h3><span class="card-icon">📸</span>Photography Portfolio</h3>
+                <p>Capturing moments, creating memories</p>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item" onclick="uploadContent('photo1')">
+                        <div class="portfolio-placeholder">📸</div>
+                        <div class="portfolio-label">Nature Shot</div>
+                    </div>
+                    <div class="portfolio-item" onclick="uploadContent('photo2')">
+                        <div class="portfolio-placeholder">🌅</div>
+                        <div class="portfolio-label">Portrait</div>
+                    </div>
+                    <div class="portfolio-item" onclick="uploadContent('photo3')">
+                        <div class="portfolio-placeholder">🏛️</div>
+                        <div class="portfolio-label">Architecture</div>
+                    </div>
+                    <div class="portfolio-item" onclick="uploadContent('photo4')">
+                        <div class="portfolio-placeholder">🎭</div>
+                        <div class="portfolio-label">Creative</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" onclick="showDetails('video')">
+                <h3><span class="card-icon">🎬</span>Video Editing Showcase</h3>
+                <p>Bringing stories to life through motion</p>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item" onclick="uploadContent('video1')">
+                        <div class="portfolio-placeholder">🎥</div>
+                        <div class="portfolio-label">Short Film</div>
+                    </div>
+                    <div class="portfolio-item" onclick="uploadContent('video2')">
+                        <div class="portfolio-placeholder">📱</div>
+                        <div class="portfolio-label">Social Media</div>
+                    </div>
+                    <div class="portfolio-item" onclick="uploadContent('video3')">
+                        <div class="portfolio-placeholder">🎞️</div>
+                        <div class="portfolio-label">Documentary</div>
+                    </div>
+                    <div class="portfolio-item" onclick="uploadContent('video4')">
+                        <div class="portfolio-placeholder">✨</div>
+                        <div class="portfolio-label">Motion Graphics</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" onclick="showDetails('creative')">
+                <h3><span class="card-icon">✍️</span>Creative Skills</h3>
+                <div class="skills-grid">
+                    <div class="skill-item">🎬 Video Editing</div>
+                    <div class="skill-item">📸 Photography</div>
+                    <div class="skill-item">📝 Script Writing</div>
+                    <div class="skill-item">📱 Social Media Management</div>
+                </div>
+                <div class="fun-fact">
+                    <p>🎨 Master of visual storytelling - from crafting compelling narratives to managing engaging social media campaigns. Every frame tells a story, every post sparks engagement!</p>
+                </div>
+            </div>
+
+            <div class="card" onclick="showDetails('vision')">
+                <h3><span class="card-icon">🚀</span>Vision & Goals</h3>
+                <p>🤖 Passionate about <strong>Software Development</strong> and <strong>Artificial Intelligence</strong></p>
+                <p>🤝 Ready to collaborate with professionals and create something extraordinary!</p>
+                <div class="fun-fact">
+                    <p>💡 "Let's do something crazy!" - Because the best innovations come from bold ideas, fearless execution, and the perfect blend of creativity with technology. The future is waiting to be built!</p>
+                </div>
+            </div>
+
+            <div class="card" onclick="showDetails('roots')">
+                <h3><span class="card-icon">🏜️</span>My Rajasthani Roots</h3>
+                <p><strong>🏰 Jalore, Rajasthan</strong></p>
+                <p>A land of rich culture, ancient forts, and endless possibilities. The city of granite and gold, where tradition meets ambition.</p>
+                <div class="fun-fact">
+                    <p>🌟 Carrying forward the spirit of determination and innovation from the heart of Rajasthan - where every sunset paints the sky with dreams and every sunrise brings new opportunities!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-section">
+            <h2>🤝 Let's Connect & Create Magic!</h2>
+            <p>Ready to collaborate on exciting projects in AI, software development, or creative content? Let's turn ideas into reality!</p>
+            
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <span class="contact-icon">📱</span>
+                    <h4>Instagram</h4>
+                    <a href="https://www.instagram.com/prem.talkz?utm_source=ig_web_button_share_sheet&igsh=MTJvd3Bnd3VhMWlyNA==" class="contact-link" target="_blank">@prem.talkz</a>
+                </div>
+                
+                <div class="contact-item">
+                    <span class="contact-icon">💬</span>
+                    <h4>WhatsApp</h4>
+                    <a href="https://wa.me/918824152883" class="contact-link" target="_blank">+91 8824152883</a>
+                </div>
+                
+                <div class="contact-item">
+                    <span class="contact-icon">📧</span>
+                    <h4>Email</h4>
+                    <a href="mailto:mahendrvirash@gmail.com" class="contact-link">mahendrvirash@gmail.com</a>
+                </div>
+            </div>
+            
+            <button class="interactive-btn pulse-btn" onclick="openInstagram()">Follow on Instagram</button>
+            <button class="interactive-btn" onclick="openWhatsApp()">Chat on WhatsApp</button>
+            <button class="interactive-btn" onclick="sendEmail()">Send Email</button>
+        </div>
+    </div>
+
+    <script>
+        function animateAvatar() {
+            const avatar = document.querySelector('.profile-avatar');
+            avatar.style.transform = 'scale(1.2) rotate(360deg)';
+            setTimeout(() => {
+                avatar.style.transform = 'scale(1) rotate(0deg)';
+            }, 500);
+        }
+
+        function showDetails(section) {
+            const messages = {
+                academic: "🎓 Currently diving deep into Chemistry at IIT Bombay while exploring the fascinating world of technology and AI. The perfect blend of scientific thinking and creative problem-solving from the heart of Rajasthan!",
+                photography: "📸 Passionate about capturing the perfect shot! From stunning landscapes of Rajasthan to the vibrant campus life at IIT Bombay. Every click tells a unique story. Ready to showcase your amazing photography work!",
+                video: "🎬 Master of visual storytelling through dynamic video editing! Creating compelling narratives that engage and inspire. From short films to social media content - bringing creativity to every frame!",
+                creative: "🎨 A perfect blend of technical skills and creative vision. From crafting compelling scripts to managing engaging social media campaigns - creativity meets strategy in every project!",
+                vision: "🚀 Excited about the intersection of AI and software development. Looking to collaborate with industry professionals and build groundbreaking solutions that make a real impact. The future is code + creativity!",
+                roots: "🏜️ Proud to represent Jalore, Rajasthan - the city of granite and forts! Bringing the warmth of Rajasthani culture, the strength of desert resilience, and the drive for excellence to every project!"
+            };
+            
+            alert(messages[section]);
+        }
+
+        function uploadContent(type) {
+            alert(`📁 Ready to showcase your ${type}! Please share your photos/videos and I'll integrate them into your portfolio. Your creative work deserves to shine! ✨`);
+        }
+
+        function openInstagram() {
+            window.open('https://www.instagram.com/prem.talkz?utm_source=ig_web_button_share_sheet&igsh=MTJvd3Bnd3VhMWlyNA==', '_blank');
+        }
+
+        function openWhatsApp() {
+            window.open('https://wa.me/918824152883', '_blank');
+        }
+
+        function sendEmail() {
+            window.open('mailto:mahendrvirash@gmail.com', '_blank');
+        }
+
+        // Enhanced sparkle effects
+        document.addEventListener('mousemove', function(e) {
+            if (Math.random() > 0.95) {
+                createSparkle(e.clientX, e.clientY);
+            }
+        });
+
+        function createSparkle(x, y) {
+            const sparkle = document.createElement('div');
+            sparkle.style.position = 'fixed';
+            sparkle.style.left = x + 'px';
+            sparkle.style.top = y + 'px';
+            sparkle.style.width = '6px';
+            sparkle.style.height = '6px';
+            sparkle.style.background = '#fff';
+            sparkle.style.borderRadius = '50%';
+            sparkle.style.pointerEvents = 'none';
+            sparkle.style.animation = 'sparkle 1.5s ease-out forwards';
+            sparkle.style.zIndex = '1000';
+            sparkle.style.boxShadow = '0 0 10px #fff';
+            
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => {
+                sparkle.remove();
+            }, 1500);
+        }
+
+        // Enhanced sparkle animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes sparkle {
+                0% { 
+                    transform: scale(0) rotate(0deg); 
+                    opacity: 1; 
+                }
+                50% {
+                    transform: scale(1) rotate(180deg);
+                    opacity: 0.8;
+                }
+                100% { 
+                    transform: scale(0) rotate(360deg); 
+                    opacity: 0; 
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Add some interactive elements on load
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.querySelector('.pulse-btn').style.animation = 'pulse 2s infinite';
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
