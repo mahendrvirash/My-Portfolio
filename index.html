@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahendra (Prem) | Creative Scientist</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #0a0a0a 100%);
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        /* Spider Web Background Animation */
+        .web-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .web-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent 0%, rgba(220, 20, 60, 0.3) 50%, transparent 100%);
+            animation: webPulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes webPulse {
+            0%, 100% { opacity: 0.1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.02); }
+        }
+        
+        /* Navigation */
+        .nav-container {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            display: flex;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(220, 20, 60, 0.3);
+            border-radius: 50px;
+            padding: 8px;
+            box-shadow: 0 10px 30px rgba(220, 20, 60, 0.2);
+        }
+        
+        .nav-btn {
+            padding: 12px 25px;
+            background: transparent;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Orbitron', monospace;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-btn:hover, .nav-btn.active {
+            background: linear-gradient(45deg, #dc143c, #ff6b6b);
+            box-shadow: 0 5px 15px rgba(220, 20, 60, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .nav-btn:hover::before {
+            left: 100%;
+        }
+        
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 20px 50px;
+        }
+        
+        /* Section Styles */
+        .section {
+            display: none;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .section.active {
+            display: block;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .hero-avatar {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 2rem;
+            background: linear-gradient(45deg, #dc143c, #ff6b6b, #dc143c);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbitron', monospace;
+            font-size: 4rem;
+            font-weight: 900;
+            color: #fff;
+            position: relative;
+            animation: heroFloat 6s ease-in-out infinite;
+            box-shadow: 0 0 50px rgba(220, 20, 60, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+        
+        .hero-avatar::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(45deg, #dc143c, #ff6b6b, #dc143c);
+            border-radius: 50%;
+            z-index: -1;
+            animation: rotate 10s linear infinite;
+        }
+        
+        @keyframes heroFloat {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .hero h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #fff, #dc143c, #ff6b6b, #fff);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 4s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: #ccc;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .hero-roll {
+            display: inline-block;
+            padding: 12px 25px;
+            background: rgba(220, 20, 60, 0.2);
+            border: 2px solid rgba(220, 20, 60, 0.5);
+            border-radius: 30px;
+            font-family: 'Orbitron', monospace;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        /* Bio Section */
+        .bio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .bio-card {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(220, 20, 60, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .bio-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(220, 20, 60, 0.1), transparent);
+            transition: left 0.6s;
+        }
+        
+        .bio-card:hover::before {
+            left: 100%;
+        }
+        
+        .bio-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(220, 20, 60, 0.6);
+            box-shadow: 0 15px 40px rgba(220, 20, 60, 0.2);
+        }
+        
+        .bio-card h3 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            color: #dc143c;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .bio-card p {
+            line-height: 1.6;
+            color: #ccc;
+            margin-bottom: 1rem;
+        }
+        
+        .highlight {
+            color: #ff6b6b;
+            font-weight: 600;
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .skill-category {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(220, 20, 60, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-5px);
+            border-color: rgba(220, 20, 60, 0.6);
+        }
+        
+        .skill-category h3 {
+            font-family: 'Orbitron', monospace;
+            color: #dc143c;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .skill-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            margin: 8px 0;
+            background: rgba(220, 20, 60, 0.1);
+            border-radius: 10px;
+            border-left: 3px solid #dc143c;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-item:hover {
+            background: rgba(220, 20, 60, 0.2);
+            transform: translateX(5px);
+        }
+        
+        /* Photography Gallery */
+        .gallery-section {
+            margin: 2rem 0;
+        }
+        
+        .gallery-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 2rem;
+            color: #dc143c;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .gallery-category {
+            margin-bottom: 3rem;
+        }
+        
+        .gallery-category h4 {
+            font-family: 'Orbitron', monospace;
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .photo-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(220, 20, 60, 0.3);
+        }
+        
+        .photo-item:hover {
+            transform: scale(1.05);
+            border-color: rgba(220, 20, 60, 0.8);
+            box-shadow: 0 10px 30px rgba(220, 20, 60, 0.3);
+        }
+        
+        .photo-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .photo-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .photo-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .photo-item:hover .photo-overlay {
+            transform: translateY(0);
+        }
+        
+        /* Video Section */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .video-card {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(220, 20, 60, 0.3);
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .video-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(220, 20, 60, 0.6);
+            box-shadow: 0 15px 40px rgba(220, 20, 60, 0.2);
+        }
+        
+        .video-card h4 {
+            font-family: 'Orbitron', monospace;
+            color: #dc143c;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .video-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(45deg, #dc143c, #ff6b6b);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: 'Orbitron', monospace;
+            letter-spacing: 1px;
+        }
+        
+        .video-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(220, 20, 60, 0.4);
+        }
+        
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-card {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(220, 20, 60, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(220, 20, 60, 0.1) 0%, transparent 70%);
+            transform: scale(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-card:hover::before {
+            transform: scale(1);
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(220, 20, 60, 0.6);
+            box-shadow: 0 15px 40px rgba(220, 20, 60, 0.3);
+        }
+        
+        .contact-icon {
+            font-size: 3rem;
+            color: #dc143c;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-card h4 {
+            font-family: 'Orbitron', monospace;
+            color: #fff;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .contact-link {
+            color: #ccc;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-link:hover {
+            color: #ff6b6b;
+        }
+        
+        /* Portrait Modal */
+        .portrait-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+        
+        .modal-content {
+            text-align: center;
+            color: white;
+            font-family: 'Orbitron', monospace;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-avatar {
+                width: 150px;
+                height: 150px;
+                font-size: 3rem;
+            }
+            
+            .nav-container {
+                flex-wrap: wrap;
+                gap: 5px;
+            }
+            
+            .nav-btn {
+                padding: 10px 20px;
+                font-size: 12px;
+            }
+            
+            .bio-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Web scroll effect */
+        .web-scroll-line {
+            position: fixed;
+            width: 2px;
+            height: 0;
+            background: linear-gradient(180deg, transparent, #dc143c, transparent);
+            left: 50%;
+            top: 0;
+            z-index: -1;
+            animation: webScroll 2s ease-out;
+        }
+        
+        @keyframes webScroll {
+            0% {
+                height: 0;
+                top: 0;
+            }
+            50% {
+                height: 100vh;
+                top: 0;
+            }
+            100% {
+                height: 0;
+                top: 100vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Web Background -->
+    <div class="web-container" id="webContainer"></div>
+    
+    <!-- Portrait Modal -->
+    <div class="portrait-modal" id="portraitModal">
+        <button class="close-modal" onclick="closePortraitModal()">&times;</button>
+        <div class="modal-content">
+            <h2>Portrait Gallery</h2>
+            <p>Available for in-person viewing only</p>
+            <p>Contact me to schedule a viewing session!</p>
+        </div>
+    </div>
+    
+    <!-- Navigation -->
+    <div class="nav-container">
+        <button class="nav-btn active" onclick="showSection('bio')">BIO</button>
+        <button class="nav-btn" onclick="showSection('skills')">SKILLS</button>
+        <button class="nav-btn" onclick="showSection('contact')">CONTACT</button>
+    </div>
+    
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="hero-avatar" style="background-image: url('data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg=='); background-size: cover; background-position: center; overflow: hidden;">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" 
+                     style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" 
+                     alt="Mahendra Prem" 
+                     onerror="this.style.display='none'; this.parentElement.innerHTML='MP'; this.parentElement.style.backgroundImage='none';">
+            </div>
+            <h1>MAHENDRA (PREM)</h1>
+            <div class="hero-subtitle">Creative Scientist & Digital Storyteller</div>
+            <div class="hero-roll">Roll No: 25b2709 | IIT Bombay</div>
+        </div>
+        
+        <!-- Bio Section -->
+        <div class="section active" id="bio">
+            <div class="bio-grid">
+                <div class="bio-card">
+                    <h3>🎓 Academic Journey</h3>
+                    <p><span class="highlight">Indian Institute of Technology Bombay</span></p>
+                    <p>BS Chemistry (UG Freshman)</p>
+                    <p>From the vibrant desert city of <span class="highlight"><a href="https://maps.app.goo.gl/dt36oPCxESrC9TP46" target="_blank" style="color: #ff6b6b; text-decoration: none;">Jalore, Rajasthan</a></span> to the bustling campus of IIT Bombay - bringing small-town dreams to big-city opportunities!</p>
+                </div>
+                
+                <div class="bio-card">
+                    <h3>🚀 Vision & Goals</h3>
+                    <p>Passionate about <span class="highlight">Software Development</span> and <span class="highlight">Artificial Intelligence</span></p>
+                    <p>Ready to collaborate with professionals and create something extraordinary!</p>
+                    <p><em>"Let's do something crazy!"</em> - Because the best innovations come from bold ideas and fearless execution.</p>
+                </div>
+                
+                <div class="bio-card">
+                    <h3>🏜️ Rajasthani Roots</h3>
+                    <p><span class="highlight"><a href="https://maps.app.goo.gl/dt36oPCxESrC9TP46" target="_blank" style="color: #ff6b6b; text-decoration: none;">Jalore, Rajasthan</a></span></p>
+                    <p>A land of rich culture, ancient forts, and endless possibilities. The city of granite and gold, where tradition meets ambition.</p>
+                    <p>Carrying forward the spirit of determination and innovation from the heart of Rajasthan.</p>
+                </div>
+            </div>
+            
+            <!-- Photography Gallery -->
+            <div class="gallery-section">
+                <h2 class="gallery-title">📸 PHOTOGRAPHY PORTFOLIO</h2>
+                
+                <div class="gallery-category">
+                    <h4>Nature & Landscapes</h4>
+                    <div class="photo-grid" id="nature-grid"></div>
+                </div>
+                
+                <div class="gallery-category">
+                    <h4>Architecture</h4>
+                    <div class="photo-grid" id="architecture-grid"></div>
+                </div>
+                
+                <div class="gallery-category">
+                    <h4>Portrait</h4>
+                    <div class="photo-grid">
+                        <div class="photo-item" onclick="showPortraitModal()">
+                            <div style="height: 200px; background: linear-gradient(45deg, #dc143c, #ff6b6b); display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                                👤
+                            </div>
+                            <div class="photo-overlay">
+                                <p>Portrait Collection - Click to view</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Video Section -->
+            <div class="gallery-section">
+                <h2 class="gallery-title">🎬 VIDEO PORTFOLIO</h2>
+                <div class="video-grid">
+                    <div class="video-card">
+                        <h4>Last 2 Months</h4>
+                        <p>Recent creative compilation</p>
+                        <a href="https://www.instagram.com/reel/DOWPgALAb7D/?utm_source=ig_web_copy_link&igsh=cHgwbmJ5ZXdvNTh6" target="_blank" class="video-btn">Watch Reel</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <h4>IIT Bombay</h4>
+                        <p>Campus life showcase</p>
+                        <a href="https://www.instagram.com/reel/DNdoIcKsG5h/?utm_source=ig_web_button_share_sheet&igsh=Z2hraDJxNzdjN3Fr" target="_blank" class="video-btn">Watch Reel</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <h4>Freshers' Intro</h4>
+                        <p>Introduction video showcase</p>
+                        <a href="https://www.instagram.com/reel/DOy2oEKkzAl/?utm_source=ig_web_copy_link&igsh=MWlpMGg2OTFjaWcxbQ==" target="_blank" class="video-btn">Watch Reel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Skills Section -->
+        <div class="section" id="skills">
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>🎨 Creative Skills</h3>
+                    <div class="skill-item" onclick="goToPortfolio('video')" style="cursor: pointer;">🎬 Video Editing</div>
+                    <div class="skill-item" onclick="goToPortfolio('photo')" style="cursor: pointer;">📸 Photography</div>
+                    <div class="skill-item">✍️ Script Writing</div>
+                    <div class="skill-item">📱 Social Media Management</div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>🔬 Technical Skills</h3>
+                    <div class="skill-item">🧪 Chemistry Research</div>
+                    <div class="skill-item">💻 Software Development</div>
+                    <div class="skill-item">🤖 AI & Machine Learning</div>
+                    <div class="skill-item">📊 Data Analysis</div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>🎯 Soft Skills</h3>
+                    <div class="skill-item">🎙️ Communication</div>
+                    <div class="skill-item">🤝 Team Collaboration</div>
+                    <div class="skill-item">💡 Creative Problem Solving</div>
+                    <div class="skill-item">⚡ Adaptability</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Contact Section -->
+        <div class="section" id="contact">
+            <div class="contact-grid">
+                <div class="contact-card" onclick="openInstagram()">
+                    <div class="contact-icon">📱</div>
+                    <h4>Instagram</h4>
+                    <a href="https://www.instagram.com/prem.talkz?utm_source=ig_web_button_share_sheet&igsh=MTJvd3Bnd3VhMWlyNA==" class="contact-link" target="_blank" onclick="event.stopPropagation()">@prem.talkz</a>
+                    <p style="color: #888; margin-top: 10px;">Follow for creative content</p>
+                </div>
+                
+                <div class="contact-card" onclick="openLinkedIn()">
+                    <div class="contact-icon">💼</div>
+                    <h4>LinkedIn</h4>
+                    <a href="https://www.linkedin.com/in/mahendra-virash-7a6991376?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="contact-link" target="_blank" onclick="event.stopPropagation()">Mahendra Virash</a>
+                    <p style="color: #888; margin-top: 10px;">Professional network</p>
+                </div>
+                
+                <div class="contact-card" onclick="openWhatsApp()">
+                    <div class="contact-icon">💬</div>
+                    <h4>WhatsApp</h4>
+                    <a href="https://wa.me/918824152883" class="contact-link" target="_blank" onclick="event.stopPropagation()">+91 8824152883</a>
+                    <p style="color: #888; margin-top: 10px;">Quick chat & collaboration</p>
+                </div>
+                
+                <div class="contact-card" onclick="sendEmail()">
+                    <div class="contact-icon">📧</div>
+                    <h4>Email</h4>
+                    <a href="mailto:mahendrvirash@gmail.com" class="contact-link" onclick="event.stopPropagation()">mahendrvirash@gmail.com</a>
+                    <p style="color: #888; margin-top: 10px;">Professional inquiries</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Navigation functionality
+        function showSection(sectionName) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active class from all nav buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionName).classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+            
+            // Add web scroll effect
+            createWebScrollEffect();
+        }
+        
+        // Create web background
+        function createWebBackground() {
+            const container = document.getElementById('webContainer');
+            const webLines = [
+                { left: '10%', top: '20%', width: '200px', height: '2px', rotation: '45deg' },
+                { left: '80%', top: '30%', width: '150px', height: '2px', rotation: '-30deg' },
+                { left: '30%', top: '70%', width: '180px', height: '2px', rotation: '60deg' },
+                { left: '70%', top: '80%', width: '120px', height: '2px', rotation: '-45deg' },
+                { left: '50%', top: '10%', width: '2px', height: '300px', rotation: '0deg' },
+                { left: '20%', top: '50%', width: '2px', height: '250px', rotation: '15deg' },
+            ];
+            
+            webLines.forEach(line => {
+                const webLine = document.createElement('div');
+                webLine.className = 'web-line';
+                webLine.style.left = line.left;
+                webLine.style.top = line.top;
+                webLine.style.width = line.width;
+                webLine.style.height = line.height;
+                webLine.style.transform = `rotate(${line.rotation})`;
+                webLine.style.animationDelay = Math.random() * 2 + 's';
+                container.appendChild(webLine);
+            });
+        }
+        
+        // Create web scroll effect
+        function createWebScrollEffect() {
+            const webLine = document.createElement('div');
+            webLine.className = 'web-scroll-line';
+            document.body.appendChild(webLine);
+            
+            setTimeout(() => {
+                webLine.remove();
+            }, 2000);
+        }
+        
+        // Portrait modal functionality
+        function showPortraitModal() {
+            document.getElementById('portraitModal').style.display = 'flex';
+        }
+        
+        function closePortraitModal() {
+            document.getElementById('portraitModal').style.display = 'none';
+        }
+        
+        // Navigation from skills to portfolio
+        function goToPortfolio(type) {
+            // Switch to bio section
+            showSection('bio');
+            
+            // Scroll to appropriate portfolio section
+            setTimeout(() => {
+                if (type === 'photo') {
+                    document.querySelector('.gallery-section').scrollIntoView({ 
+                        behavior: 'smooth' 
+                    });
+                } else if (type === 'video') {
+                    document.querySelector('.gallery-section:last-child').scrollIntoView({ 
+                        behavior: 'smooth' 
+                    });
+                }
+            }, 300);
+        }
+        
+        // Load photos from uploaded images
+        function loadPhotos() {
+            // Create nature photos with placeholder icons
+            const naturePhotos = [
+                { icon: '🌊', title: 'Lake View', desc: 'Peaceful lakeside scenery' },
+                { icon: '🌅', title: 'Garden Sunset', desc: 'Beautiful garden at golden hour' },
+                { icon: '🌊', title: 'Ocean Sunset', desc: 'Stunning ocean view at sunset' },
+                { icon: '🌿', title: 'Nature Path', desc: 'Lush green nature walkway' },
+                { icon: '🌸', title: 'Tropical Views', desc: 'Vibrant tropical landscape' },
+                { icon: '🌴', title: 'Palm Paradise', desc: 'Serene palm tree scenes' }
+            ];
+            
+            // Create architecture photos with placeholder icons  
+            const architecturePhotos = [
+                { icon: '🏨', title: 'Taj Hotel Mumbai', desc: 'Historic luxury hotel architecture' },
+                { icon: '🏛️', title: 'Campus Architecture', desc: 'IIT Bombay modern buildings' },
+                { icon: '🏙️', title: 'City Skyline', desc: 'Mumbai cityscape views' },
+                { icon: '🏢', title: 'Modern Buildings', desc: 'Contemporary architecture' },
+                { icon: '🌫️', title: 'Misty Views', desc: 'Buildings in morning mist' },
+                { icon: '☁️', title: 'Sky Views', desc: 'Architectural perspectives' }
+            ];
+            
+            // Create photo elements for nature
+            const natureGrid = document.getElementById('nature-grid');
+            naturePhotos.forEach(photo => {
+                const photoItem = document.createElement('div');
+                photoItem.className = 'photo-item';
+                photoItem.innerHTML = `
+                    <div style="
+                        height: 200px; 
+                        background: linear-gradient(45deg, #667eea, #764ba2); 
+                        display: flex; 
+                        flex-direction: column;
+                        align-items: center; 
+                        justify-content: center; 
+                        font-size: 3rem;
+                        color: white;
+                    ">
+                        ${photo.icon}
+                        <div style="font-size: 0.8rem; margin-top: 10px; text-align: center;">${photo.title}</div>
+                    </div>
+                    <div class="photo-overlay">
+                        <p><strong>${photo.title}</strong></p>
+                        <p>${photo.desc}</p>
+                    </div>
+                `;
+                natureGrid.appendChild(photoItem);
+            });
+            
+            // Create photo elements for architecture
+            const archGrid = document.getElementById('architecture-grid');
+            architecturePhotos.forEach(photo => {
+                const photoItem = document.createElement('div');
+                photoItem.className = 'photo-item';
+                photoItem.innerHTML = `
+                    <div style="
+                        height: 200px; 
+                        background: linear-gradient(45deg, #dc143c, #ff6b6b); 
+                        display: flex; 
+                        flex-direction: column;
+                        align-items: center; 
+                        justify-content: center; 
+                        font-size: 3rem;
+                        color: white;
+                    ">
+                        ${photo.icon}
+                        <div style="font-size: 0.8rem; margin-top: 10px; text-align: center;">${photo.title}</div>
+                    </div>
+                    <div class="photo-overlay">
+                        <p><strong>${photo.title}</strong></p>
+                        <p>${photo.desc}</p>
+                    </div>
+                `;
+                archGrid.appendChild(photoItem);
+            });
+        }
+        
+        // Contact link functions
+        function openInstagram() {
+            window.open('https://www.instagram.com/prem.talkz?utm_source=ig_web_button_share_sheet&igsh=MTJvd3Bnd3VhMWlyNA==', '_blank');
+        }
+        
+        function openLinkedIn() {
+            window.open('https://www.linkedin.com/in/mahendra-virash-7a6991376?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app', '_blank');
+        }
+        
+        function openWhatsApp() {
+            window.open('https://wa.me/918824152883', '_blank');
+        }
+        
+        function sendEmail() {
+            window.open('mailto:mahendrvirash@gmail.com', '_blank');
+        }
+        
+        // Initialize everything
+        window.addEventListener('load', function() {
+            createWebBackground();
+            loadPhotos();
+            
+            // Add some random web effects
+            setInterval(() => {
+                if (Math.random() > 0.7) {
+                    createWebScrollEffect();
+                }
+            }, 5000);
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            const modal = document.getElementById('portraitModal');
+            if (e.target === modal) {
+                closePortraitModal();
+            }
+        });
+    </script>
+</body>
+</html>
